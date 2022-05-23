@@ -71,6 +71,7 @@ section > h3 {
     box-sizing: border-box;
 }
 
+
 #bar-chart-container {
     width: 100%;
     margin: 0;
@@ -159,6 +160,9 @@ p {
     color: #333;
 }
 
+span.caption {
+    font-size: 12pt;
+}
 
 path.country{
     cursor: pointer;
