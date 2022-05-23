@@ -45,8 +45,8 @@ let country = {
 * Using a Promise.all([]), we can load more than one dataset at a time
 * */
 Promise.all([
-    d3.json("../data/world.geo.json"), // data soure: https://geojson-maps.ash.ms/
-    d3.csv("../data/HDI_2019.csv")
+    d3.json("data/world.geo.json"), // data soure: https://geojson-maps.ash.ms/
+    d3.csv("data/HDI_2019.csv")
     ]).then(([geojson, HDI]) => {
     country.geojson = geojson
     country.HDI = HDI
@@ -140,11 +140,8 @@ Promise.all([
 /******************************* MAPS ********************************/
 /*********************************************************************/
 
-/********************* HDI MAPS *********************/
-/*********** Putting all the HDI maps here **********/
- 
 /***************************************/
-/****** HDI Map against bar chart ******/
+/**************** HDI Map **************/
   svgMapHDI = d3.select("#map")
     .append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
@@ -156,16 +153,18 @@ Promise.all([
 
   hoverBox = d3.select(".hover")
 
-  const projection = d3.geoEckert1()
+  const projection = d3.geoFahey()
     .fitSize([width, height], country.geojson)
   const pathGen = d3.geoPath().projection(projection);
   // https://github.com/d3/d3-geo-projection
-  // geoEqualEarth
-  // geoMercator *** 
-  // geoAlbers ***
-  // geoOrthographic ***
-  // d3.geoNaturalEarth1()
+  // d3.geoNaturalEarth1() ***
   // d3.geoEckert1()
+  // d3.geoEckert3()
+  // d3.geoBromley() ***
+  // d3.geoFahey() ***
+  // d3.geoNellHammer() ***
+  // d3.geoRobinson() ***
+  // d3.geoWagner6() ***
 
 
   const countries = svgMapHDI.selectAll("path.country")
@@ -198,109 +197,6 @@ Promise.all([
 
 
 
-/*************************************************/
-/************ HDI Map against GII Map ************/
-
-svgMapHDIGII = d3.select("#HDI-GII-map")
-.append("svg")
-.attr("preserveAspectRatio", "xMinYMin meet")
-.attr("viewBox", `0 0 ${width} ${height}`)
-// .style("border", "solid")
-.style("background-color", "#c0f7fa")
-.style("padding-top", "1%")
-
-hoverHDIGII = d3.select(".HDI-GII-hover")
-
-const HDIGIIprojection = d3.geoEqualEarth()
-.fitSize([width, (height * 0.95)], country.geojson)
-const pathGenHDIGII = d3.geoPath().projection(HDIGIIprojection);
-// https://github.com/d3/d3-geo-projection
-// geoEqualEarth
-// geoMercator *** 
-// geoAlbers ***
-// geoOrthographic ***
-
-
-const HDIGIIcountries = svgMapHDIGII.selectAll("path.country")
-.data(country.geojson.features)
-.join("path")
-.attr("class", "country")
-.attr("d", d => pathGenHDIGII(d))
-.attr("stroke","white")
-.attr("fill", (d, i) => {
-    return colorScaleHDI(+HDILookup.get(d.properties.name))
-})
-.on("mouseover", mouseOver)
-.on("click", (ev, d) => {
-  console.log('d :>> ', d);
-  country.hover_country_GII = d.properties.name;
-  country.hover_HDI_GII_rank = HDIRankLookup.get(d.properties.name)
-  country.hover_HDI_GII = HDILookup.get(d.properties.name)
-  mouseClickHDIGII();
-})
-.on("mouseout", mouseOutHDIGII)
-
-svgMapHDIGII.append("text")
-.attr("transform", `translate(${width - margin.right * 5}, 20)`)
-// .style("text-anchor", "middle")
-.text("Human Development Index"); 
-
-svgMapHDIGII.append("g")
-.call(colorLegendHDI)
-.attr("transform", `translate(${width - margin.right * 2}, 30)`)
-
-
-/******************************************/
-/****** HDI Map against Internet Map ******/
-
-svgMapHDIinternet = d3.select("#HDI-internet-map")
-.append("svg")
-.attr("preserveAspectRatio", "xMinYMin meet")
-.attr("viewBox", `0 0 ${width} ${height}`)
-// .style("border", "solid")
-.style("background-color", "#c0f7fa")
-.style("padding-top", "1%")
-
-hoverHDIinternet = d3.select(".HDI-internet-hover")
-
-const HDIinternetprojection = d3.geoEqualEarth()
-.fitSize([width, (height * 0.95)], country.geojson)
-const pathGenHDIinternet = d3.geoPath().projection(HDIinternetprojection);
-// https://github.com/d3/d3-geo-projection
-// geoEqualEarth
-// geoMercator *** 
-// geoAlbers ***
-// geoOrthographic ***
-
-
-const HDIinternetcountries = svgMapHDIinternet.selectAll("path.country")
-.data(country.geojson.features)
-.join("path")
-.attr("class", "country")
-.attr("d", d => pathGenHDIinternet(d))
-.attr("stroke","white")
-.attr("fill", (d, i) => {
-    return colorScaleHDI(+HDILookup.get(d.properties.name))
-})
-.on("mouseover", mouseOver)
-.on("click", (ev, d) => {
-  console.log('d :>> ', d);
-  country.hover_Internet_country = d.properties.name;
-  country.hover_HDI_internet_rank = HDIRankLookup.get(d.properties.name)
-  country.hover_HDI_internet = HDILookup.get(d.properties.name)
-  mouseClickHDIInternet();
-})
-.on("mouseout", mouseOutHDIInternet)
-
-svgMapHDIinternet.append("text")
-.attr("transform", `translate(${width - margin.right * 5}, 20)`)
-// .style("text-anchor", "middle")
-.text("Human Development Index"); 
-
-svgMapHDIinternet.append("g")
-.call(colorLegendHDI)
-.attr("transform", `translate(${width - margin.right * 2}, 30)`)
-
 
 /**********************************************/
 /**********************************************/
@@ -316,7 +212,7 @@ svgMapHDIinternet.append("g")
 
   hoverInternet = d3.select(".internet-hover")
 
-  const projectionInternet = d3.geoEqualEarth()
+  const projectionInternet = d3.geoFahey()
   .fitSize([width, (height * 0.95)], country.geojson)
   const pathGenInternet = d3.geoPath().projection(projectionInternet);
 
@@ -365,7 +261,7 @@ svgMapHDIinternet.append("g")
 
   hoverGII = d3.select(".GII-hover")
 
-  const projectionGII = d3.geoEqualEarth()
+  const projectionGII = d3.geoFahey()
       .fitSize([width, (height * 0.95)], country.geojson)
   const pathGenGII = d3.geoPath().projection(projectionGII);
 
@@ -437,51 +333,7 @@ svgMapHDIinternet.append("g")
     .style("visibility", "hidden")
   }
 
-/************ HDI Map against GII Map ************/
-/*************************************************/
 
-function mouseClickHDIGII() {
-  hoverHDIGII
-  .style("visibility", "visible")
-  .html(
-    `<div class="hover_container">
-    <div>Country: ${country.hover_country_GII}</div>
-    <div>Human Development Index: ${country.hover_HDI_GII}</div>
-    <div>World HDI rank: ${country.hover_HDI_GII_rank} out of 189</div>
-    </div>`
-  )
-}
-
-function mouseOutHDIGII(){
-  d3.select(this)
-  .attr("stroke", "white")
-  .attr("stroke-width", "1px")
-  hoverHDIGII
-  .style("visibility", "hidden")
-}
-
-/******* HDI Map against Internet Users Map *******/
-/**************************************************/
-
-function mouseClickHDIInternet() {
-  hoverHDIinternet
-  .style("visibility", "visible")
-  .html(
-    `<div class="hover_container">
-    <div>Country: ${country.hover_Internet_country }</div>
-    <div>Human Development Index: ${country.hover_HDI_internet}</div>
-    <div>World HDI rank: ${country.hover_HDI_internet_rank} out of 189</div>
-    </div>`
-  )
-}
-
-function mouseOutHDIInternet(){
-  d3.select(this)
-  .attr("stroke", "white")
-  .attr("stroke-width", "1px")
-  hoverHDIinternet
-  .style("visibility", "hidden")
-}
 
 /******************* Internet Users Map *******************/
 /**********************************************************/

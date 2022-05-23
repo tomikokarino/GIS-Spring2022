@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8">
-    <title>Data 73200 Final Project - Tomiko Karino</title>
+    <title>Spatial Data Analysis and Visualization & Geospatial Humanities Final Project - Tomiko Karino</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,19 +9,19 @@
   </head>
   <body>
     <header>
-      <h1>Geospatial projections: more than just the coordinates</h1>
+      <h1>Human Development Index as Map Projections</h1>
     </header>
     <section id="introduction">
-      <p><em><a href="https://whitney.org/exhibitions/jasper-johns" target="_blank" alt="link to the Jasper Johns exhibit on the Whitney website.">Jasper Johns: Mirror/Mind</a></em> is an art exhibition currently on view at Whitney Museum of American Art.
-      It is a retrospective show that chronicles the artist’s career that has spanned for over seven decades.</p>
-      <p>During the early years of his career, Johns incorporated objects such as the map of the U.S. and American flag into his paintings. He purposely drew these elements inaccurately by distorting the shapes and sizes of states in the map and by painting the wrong number of stars and stripes in the flag, which caused controversies.  Some criticized Johns for being “unpatriotic” for his intentionally inaccurate rendering of these objects.  The exhibition made me realize that a map is a human construct rather than a faithful representation of our physical world and inspired me to think about the power of map projections as a data visualization tool and how they represent more than just geographical coordinates.</p>
-      <p>Projections are a mathematical transformation that takes spherical coordinates (latitude and longitude) and transforms them into an XY coordinate system<sup><a href="#footnote1">1</a></sup>. There are four properties to consider when converting from three to two dimensions: (1) shape, (2) area, (3) distance, and (4) direction<sup><a href="#footnote2">2</a></sup>. At least one of these properties will have to be compromised during the flattening process, since it is impossible to make a two-dimensional visualization that maintains all four properties<sup><a href="#footnote3">3</a></sup>. Therefore, it is not possible to represent our physical world onto a two dimensional surface truly faithfully.  Yet despite this inherent inaccuracy,  maps excel in visualizing certain types of data because it not only portrays geographic data but also signifies the political, economical and cultural relationships that exist among the locations rendered in the projection.  Cartographic projections are not merely a visual representation of our world: it also shapes our perspective of the world we live in.</p>            
-    </section>
+      <p>The United Nations Development Programme (UNDP) is a leading agency on international development that works in 170 countries to eradicate poverty and to reduce inequality.<sup><a href="#footnote1">1</a></sup> It helps countries to develop policies, leadership skills, partnering abilities, and institutional capabilities.<sup><a href="#footnote2">2</a></sup> Its work is concentrated in three focus areas: sustainable development, democratic governance and peace building, and climate and disaster resilience.<sup><a href="#footnote3">3</a></sup></p>
+      <p>One of the UNDP's work to deliver on its mission is to publish the annual Human Development Report (HDR). The Human Development Index (HDI) is a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and having a decent standard of living.<sup><a href="#footnote4">4</a></sup>  It was created based on the belief that people and their capabilities should be the ultimate criteria for assessing the development of a country, not economic growth alone.<sup><a href="#footnote5">5</a></sup>  The HDI data can be used to question national policy choices and stimulate debate about government policy priorities.</p>
+      <p>The HDI data is widely used by the international community as a reference for the level of development in countries around the world.</p>
+      <p>While UNDP offers the entire data for download on their website, they do not offer any  meaningful visualization of the data. They only make data available as a scrollable table on their website.</p>
+    <p><img src="HDI-list.jpg"/><span class="caption">A table of the HDI data in the ascending order.</span></p>
+  <p>My final project is to create map projections with the HDI and other related data to drive a point that maps are better suited for this type of data.</p>  
+  </section>
    
     <section id="map-container">
-      <p>Now, when I take the same data and create a map projection, it immediately paints a picture that tells more than just the HDI and HDI ranking by country.  </p>
-      <p>In visualizing the HDI data, the political and social context is significantly more important than the HDI ranking itself.  A map projection can convey such complex global settings that result in the HDI ranking in an instant.
-      </p>
+      <p>Here is a map of the globe with the HDI data. Compared to the tabular presentation on the UNDP website, it makes immediately apparent where the countries with higher HDI are concentrated and vice versa.  </p>
       <div id="map-row">
         <div id="hover">
           <h3>Human Development Index Map</h3>
@@ -31,16 +31,11 @@
       </div>
     </section>
     <section id="GII-HDI-container">
-      <p>Cartographic projections are also useful in inspiring questions about what influences the Human Development Index.  </p>
-      <p>See below for example, when compared with a map projection of Gender Inequality Index, the colors are almost inverted, indicating that low Gender Inequality Index correlates to high Human Development Index.
-      </p>
-      <div id="HDI-GII-map-row">
-        <div id="HDI-GII-hover">
-          <h3>Human Development Index Map</h3>
-          <div class="HDI-GII-hover"></div>
-        </div>
-        <div id="HDI-GII-map"></div>
-      </div>
+     <section>
+       <p>Visualizing data like this as a map is also effective when you want to show relationships between two similar indicators.</p>
+     <p>Gender Inequality Index (GII) is another dataset that UNDP collects, monitor and reports on.<sup><a href="#footnote6">6</a></sup> By visualizing the GII as a map, one could see that it is almost a reverse of the HDI map.</p>
+      </section>
+      
       <div id="GII-map-row">
         <div id="GII-hover">
           <h3>Gender Inequality Index Map</h3>
@@ -50,16 +45,12 @@
       </div>
       
     </section>
+    <section>
+      <p>Comparably, when the Internet Users data is presented as a map projection, the striking similarity with the HDI map is evident.</p>
+      <p>The Human Development Index is calculated from various indices, and we cannot prove correlation between the HDI and the internet users data by simply comparing the two maps.  However, visualizing these datasets as maps is an easy way to show a possible link between the two datasets.</p>
+    </section>
     <section id="internet-container">
-      <p>Now compare the HDI map with a map of Internet Users around the world, and the two choropleths appear very similar, hinting to a possible connection between the two indicators.</p>
-      <div id="HDI-internet-row">
-        <div id="HDI-internet-hover">
-          <h3>Human Development Index Map</h3>
-          <div class="HDI-internet-hover"></div>
-        </div>
-        <div id="HDI-internet-map"></div>
-      </div>
-      <div id="internet-map-row">
+     <div id="internet-map-row">
         <div id="internet-hover">
           <h3>Internet Users Map</h3>
           <div class="internet-hover"></div>
@@ -67,16 +58,17 @@
         <div id="internet-map"></div>
       </div>
     </section>
-    <section id="conclusion">
-      <p>The Human Development Index is a complex measurement derived from various inter-related indicators and cannot be fully explained by simply comparing its map projection against maps of other indicators.</p>
-      <p>However, when communicating about the HDI data to the general public to gain their understanding of its importance and how it is used, map projections is a far sperior form of visualization than a bar chart.</p>
-    </section>
+
     <footer>
       <div id="footnote">
+        <h3>Footnotes</h3>
         <ol>
-          <li><a href="http://web.mit.edu/1.961/fall2001/projections.htm" target="_blank" id="footnote1">http://web.mit.edu/1.961/fall2001/projections.htm</a></li>
-          <li><a href="https://medium.com/nightingale/understanding-map-projections-8b23ecbd2a2f" target="_blank" id="footnote2">https://medium.com/nightingale/understanding-map-projections-8b23ecbd2a2f</a></li>
+          <li><a href="https://www.undp.org/about-us" target="_blank" id="footnote1">https://www.undp.org/about-us</a></li>
+          <li><a id="footnote2">Ibid.</a></li>
           <li><a id="footnote3">Ibid.</a></li>
+          <li><a href="http://hdr.undp.org/en/content/human-development-index-hdi" target="_blank" id="footnote4">http://hdr.undp.org/en/content/human-development-index-hdi</a></li>
+          <li><a id="footnote5">Ibid.</a></li>
+          <li><a href="https://hdr.undp.org/en/content/gender-inequality-index-gii?utm_source=EN&utm_medium=GSR&utm_content=US_UNDP_PaidSearch_Brand_English&utm_campaign=CENTRAL&c_src=CENTRAL&c_src2=GSR&gclid=CjwKCAjw4ayUBhA4EiwATWyBrvt7pWXEysZoylWLEJbikETHC_dC-2MUgs6r5iDT6QNoQULigj14WRoCQi8QAvD_BwE" target="_blank" id="footnote6">https://hdr.undp.org/en/content/gender-inequality-index-gii?utm_source=EN&utm_medium=GSR&utm_content=US_UNDP_PaidSearch_Brand_English&utm_campaign=CENTRAL&c_src=CENTRAL&c_src2=GSR&gclid=CjwKCAjw4ayUBhA4EiwATWyBrvt7pWXEysZoylWLEJbikETHC_dC-2MUgs6r5iDT6QNoQULigj14WRoCQi8QAvD_BwE</a></li>
         </ol>
       </div>
     </footer>

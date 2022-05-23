@@ -1,0 +1,175 @@
+/**********************************/
+/* Width, Height, Margin, Padding */
+/**********************************/
+
+body {
+    padding: 1em;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    height: 200px;
+    width: 100%;
+    /* border: solid 1px; */
+    padding-top: 5%;
+    margin: 0;
+}
+header h1 {
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+nav#nav {
+    width: 100%;
+    /* border: solid 1px red; */
+    margin: 0 auto;
+    padding: 1em 0;
+    box-sizing: border-box;
+}
+
+nav#nav > ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav#nav > ul > li {
+    display: inline;
+}
+
+nav#nav ul > li > a {
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+
+section {
+    width: 100%;
+    padding: 0 0;
+    box-sizing: border-box;
+}
+
+footer {
+    width: 100%;
+    margin: 10% 0;
+    padding: 0 25px;
+    /* box-sizing: border-box; */
+    border-top: solid 1px #ccc
+}
+
+
+
+section p,
+section > h1,
+section > h2,
+section > h3 {
+    width: 100%;
+    padding: 1% 25% 1% 25%;
+    box-sizing: border-box;
+}
+
+#bar-chart-container {
+    width: 100%;
+    margin: 0;
+    padding: 1% 0;
+    background-color: #c0f7fa;
+}
+
+#bar-chart {
+    width: 100%;
+    margin: 0;
+    padding: 0 15%;
+    box-sizing: border-box;
+}
+
+#map-row,
+#HDI-GII-map-row,
+#GII-map-row,
+#Parliament-map-row,
+#HDI-internet-row,
+#internet-map-row {
+    display: flex;
+    padding: 0 5%;
+    margin: 1% 0; 
+    background-color: #c0f7fa;
+}
+
+#hover,
+#HDI-GII-hover,
+#GII-hover,
+#HDI-internet-hover,
+#internet-hover,
+#Parliament-hover {
+    flex: 20%;
+    /* border: solid 1px red; */
+}
+
+#map,
+#HDI-GII-map,
+#GII-map,
+#HDI-internet-map,
+#internet-map,
+#Parliament-map {
+    flex: 70%;
+    /* border: solid 1px green; */
+}
+
+.hover_container {
+    border: solid 0px black;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 14pt;
+}
+/***************************/
+/********** Fonts **********/
+/***************************/
+
+body {
+    /* font-family: "Source Sans Pro", sans-serif; */
+    font-family: 'Yantramanav', sans-serif;
+}
+
+header > h1 {
+    font-size: 36pt;
+    font-weight: 900;
+    color: #222;
+}
+
+h1 {
+    font-size: 32pt;
+    color: #222;
+}
+
+h2 {
+    font-size: 24pt;
+    color: #333;
+}
+
+h3 {
+    font-size: 18pt;
+    color: #333;
+    text-decoration: underline;
+}
+
+p {
+    font-size: 18pt;
+    color: #333;
+}
+
+
+path.country{
+    cursor: pointer;
+    }
+
+a, a:visited {
+    color: #c2c0c1;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #fc4e9a;
+}
+
