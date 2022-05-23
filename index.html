@@ -13,16 +13,24 @@
       <h1>Human Development Index as Map Projections</h1>
     </header>
     <section id="introduction">
+      <h2>Introduction</h2>
       <p>The United Nations Development Programme (UNDP) is a leading agency on international development that works in 170 countries to eradicate poverty and to reduce inequality.<sup><a href="#footnote1">1</a></sup> It helps countries to develop policies, leadership skills, partnering abilities, and institutional capabilities.<sup><a href="#footnote2">2</a></sup> Its work is concentrated in three focus areas: sustainable development, democratic governance and peace building, and climate and disaster resilience.<sup><a href="#footnote3">3</a></sup></p>
       <p>One of the UNDP's work to deliver on its mission is to publish the annual Human Development Report (HDR). The Human Development Index (HDI) is a summary measure of average achievement in key dimensions of human development: a long and healthy life, being knowledgeable and having a decent standard of living.<sup><a href="#footnote4">4</a></sup>  It was created based on the belief that people and their capabilities should be the ultimate criteria for assessing the development of a country, not economic growth alone.<sup><a href="#footnote5">5</a></sup>  The HDI data can be used to question national policy choices and stimulate debate about government policy priorities.</p>
       <p>The HDI data is widely used by the international community as a reference for the level of development in countries around the world.</p>
       <p>While UNDP offers the entire data for download on their website, they do not offer any  meaningful visualization of the data. They only make data available as a scrollable table on their website.</p>
-    <p><img src="HDI-list.jpg"/><span class="caption">A table of the HDI data in the ascending order of HDI rank.</span></p>
-  <p>My final project is to create map projections with the HDI and other related data to drive a point that maps are better suited for this type of data.</p>  
+      <p><img src="HDI-list.jpg"/><span class="caption">A table of the HDI data in the ascending order of HDI rank.</span></p>
+      <p>My final project is to create map projections with the HDI and other related data to drive a point that maps are better suited for this type of data.</p>  
   </section>
+   <section>
+     <h2>About the data</h1>
+      <p>For the Human Development Index data, I downloaded it from <a href="https://hdr.undp.org/en/content/download-data" target="_blank">the UNDP website</a>.</p>
+      <p>I obtained the GeoJSON file for the map projection from <a href="https://geojson-maps.ash.ms/" target="_blank">Download vector maps website</a>, where you can create a cutomized GeoJSON file by selecting different geographical regions.</p>
+   </section>
    
     <section id="map-container">
-      <p>Here is a map of the globe with the HDI data. Compared to the tabular presentation on the UNDP website, it makes immediately apparent where the countries with higher HDI are concentrated and vice versa.  </p>
+      <h2>Map projections</h2>
+      <p>Here is a map of the globe with the HDI data. It is created using the <a href="https://observablehq.com/@d3/fahey" target="_blank">geoFahey function</a>, which uses the Fahey pseudo cylindrical projection.  All of the maps in this project are created using this function.</p>
+      <p>Compared to the tabular presentation on the UNDP website, it makes immediately apparent where the countries with higher HDI are concentrated and vice versa.  </p>
       <div id="map-row">
         <div id="hover">
           <h3>Human Development Index Map</h3>
